@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - AUTOGPT_API_URL=http://autogpt:8000
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - redis
+      - autogpt
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  autogpt:
+    image: significantgravitas/auto-gpt
+    environment:
+      - WORKSPACE_DIRECTORY=/workspace
+      - MEMORY_BACKEND=redis
+      - REDIS_HOST=redis
+      - API_KEY=${AUTOGPT_API_KEY}
+    volumes:
+      - ./workspace:/workspace
+    depends_on:
+      - redis

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="248" fill="#1E293B" stroke="#3B82F6" stroke-width="16"/>
+  
+  <!-- Waveform -->
+  <path d="M128 256 Q192 156, 256 256 Q320 356, 384 256" 
+        stroke="#3B82F6" 
+        stroke-width="24" 
+        stroke-linecap="round"
+        fill="none">
+    <animate attributeName="d" 
+             dur="2s"
+             repeatCount="indefinite"
+             values="
+               M128 256 Q192 156, 256 256 Q320 356, 384 256;
+               M128 256 Q192 356, 256 256 Q320 156, 384 256;
+               M128 256 Q192 156, 256 256 Q320 356, 384 256"
+    />
+  </path>
+  
+  <!-- Secondary Waveform -->
+  <path d="M128 256 Q192 206, 256 256 Q320 306, 384 256" 
+        stroke="#60A5FA" 
+        stroke-width="16" 
+        stroke-linecap="round"
+        fill="none"
+        opacity="0.6">
+    <animate attributeName="d" 
+             dur="1.5s"
+             repeatCount="indefinite"
+             values="
+               M128 256 Q192 206, 256 256 Q320 306, 384 256;
+               M128 256 Q192 306, 256 256 Q320 206, 384 256;
+               M128 256 Q192 206, 256 256 Q320 306, 384 256"
+    />
+  </path>
+</svg>

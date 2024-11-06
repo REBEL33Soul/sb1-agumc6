@@ -1,0 +1,22 @@
+// Add to existing schema
+model LegalDocument {
+  id        String   @id @default(cuid())
+  type      String   // terms, privacy, rights
+  content   String   @db.Text
+  version   Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([type])
+}
+
+model LegalAcceptance {
+  id         String   @id @default(cuid())
+  userId     String
+  documentId String
+  version    Int
+  acceptedAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([documentId])
+}
